@@ -27,9 +27,9 @@ export default function Home() {
         return (
             <form onSubmit={(e) => handleSubmitForm(e)} className="flex flex-col lg:flex-row items-center gap-4">
                 <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Your Email Address"
-                       className="text-[#434343] bg-gray-50 w-full text-center py-3 rounded-full"/>
+                       className="text-[#434343] bg-gray-50 w-full text-center py-3 rounded-full md:text-lg"/>
                 <input type="submit" value="Notify me"
-                       className="bg-[#FF5E5D] py-3 text-white w-full rounded-full font-medium cursor-pointer lg:w-[50%]"/>
+                       className="bg-[#FF5E5D] py-3 text-white w-full rounded-full font-medium cursor-pointer lg:w-[50%] md:text-lg"/>
             </form>
         )
     }
@@ -47,14 +47,15 @@ export default function Home() {
                     <Image src={Logo} alt="Waycup-logo"/>
                 </header>
                 <div className="md:grid md:grid-cols-2 gap-4 lg:items-center xl:max-w-[90%] m-auto">
-                    <div className="flex flex-col gap-4 items-start">
+                    <div className="flex flex-col gap-4 lg:gap-8 items-start">
                         <span className="bg-[#FF5E5D] text-white py-0.5 px-6 rounded-full">For businesses</span>
-                        <h1 className="font-bold text-xl leading-7 text-gray-700">
+                        <h1 className="font-bold text-xl md:text-3xl leading-7 text-gray-700">
                             Are you an independent coffee shop? We’re building
                             <HighlightedText>digital tools</HighlightedText> for you - and they’re <HighlightedText>
                             FREE!</HighlightedText>
                         </h1>
-                        <p className="font-lights leading-6 text-[#555555]">How can you guarantee that your customers
+                        <p className="font-lights leading-6 text-[#555555] xl:text-xl">How can you guarantee that your
+                            customers
                             will
                             come back to you once they’ve left your store?
                             We’re building digital tools that will give you that guarantee and so much more. We know the
