@@ -25,11 +25,11 @@ export default function Home() {
 
     const handleRenderForm = () => {
         return (
-            <form onSubmit={(e) => handleSubmitForm(e)} className="flex flex-col items-center gap-4">
+            <form onSubmit={(e) => handleSubmitForm(e)} className="flex flex-col lg:flex-row items-center gap-4">
                 <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Your Email Address"
                        className="text-[#434343] bg-gray-50 w-full text-center py-3 rounded-full"/>
                 <input type="submit" value="Notify me"
-                       className="bg-[#FF5E5D] py-3 text-white w-full rounded-full font-medium cursor-pointer"/>
+                       className="bg-[#FF5E5D] py-3 text-white w-full rounded-full font-medium cursor-pointer lg:w-[50%]"/>
             </form>
         )
     }
@@ -47,7 +47,7 @@ export default function Home() {
                     <Image src={Logo} alt="Waycup-logo"/>
                 </header>
                 <div className="md:grid md:grid-cols-2 gap-4 lg:items-center xl:max-w-[90%] m-auto">
-                    <div className="flex flex-col gap-4 items-start xl:max-w-[75%]">
+                    <div className="flex flex-col gap-4 items-start">
                         <span className="bg-[#FF5E5D] text-white py-0.5 px-6 rounded-full">For businesses</span>
                         <h1 className="font-bold text-xl leading-7 text-gray-700">
                             Are you an independent coffee shop? We’re building
@@ -65,7 +65,7 @@ export default function Home() {
                             {handleRenderForm()}
                         </div>
                     </div>
-                    <div className="md:-mr-96 2xl:w-[100%]">
+                    <div className="md:-mr-96">
                         <Barista/>
                     </div>
                 </div>
