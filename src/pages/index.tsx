@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {FormEvent, FunctionComponent, PropsWithChildren, useState} from "react";
 import {ValidateEmail} from "@/common/utils/verifyEmail";
-import Logo from "@/common/assets/logo.svg";
+import Logo from "@/common/assets/logo.png";
 import Image from "next/image";
 import {Barista} from "@/common/assets/barista";
 
@@ -45,7 +45,7 @@ export default function Home() {
             <div className="w-screen overflow-hidden">
                 <main className="w-[90%] m-auto py-6 flex flex-col gap-12 max-w-[1660px] m-auto">
                     <header className="flex items-center">
-                        <Image src={Logo} alt="Waycup-logo"/>
+                        <Image src={Logo} alt="Waycup-logo" width={180}/>
                     </header>
                     <div className="md:grid md:grid-cols-2 gap-4 lg:items-center xl:max-w-[90%] m-auto">
                         <div className="flex flex-col gap-4 lg:gap-8 items-start">
