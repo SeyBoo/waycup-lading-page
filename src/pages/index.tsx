@@ -4,6 +4,7 @@ import {ValidateEmail} from "@/common/utils/verifyEmail";
 import Logo from "@/common/assets/logo.png";
 import Image from "next/image";
 import {Barista} from "@/common/assets/barista";
+import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 export default function Home() {
     const [email, setEmail] = useState<string>('')
@@ -14,23 +15,43 @@ export default function Home() {
         )
     }
 
-    const handleSubmitForm = async (e: FormEvent) => {
+    interface HandleSubmitFormProps {
+        e: FormEvent;
+        subscribe: (formData: any) => void;
+    }
+    const handleSubmitForm = async ({e, subscribe}: HandleSubmitFormProps) => {
         e.preventDefault();
 
         if (email === '' || !ValidateEmail(email)) return;
 
-        const data = await fetch('/api/mail', {method: 'POST', body: JSON.stringify({email})})
-        console.log(data)
+        subscribe({
+            EMAIL: email,
+        })
     }
+    const url = "https://waycupapp.us18.list-manage.com/subscribe/post?u=b096ebe75780f66242fca40b3&id=5852780f27";
 
     const handleRenderForm = () => {
+        const SimpleForm = () => <MailchimpSubscribe url={url}/>
+
         return (
-            <form onSubmit={(e) => handleSubmitForm(e)} className="flex flex-col lg:flex-row items-center gap-4">
-                <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Your Email Address"
-                       className="text-[#434343] bg-gray-50 w-full text-center py-3 rounded-full md:text-lg"/>
-                <input type="submit" value="Notify me"
-                       className="bg-[#FF5E5D] py-3 text-white w-full rounded-full font-medium cursor-pointer lg:w-[50%] md:text-lg"/>
-            </form>
+            <MailchimpSubscribe
+                url={url}
+                render={({ subscribe, status, message }) => (
+                    <div>
+                        <form onSubmit={(e) => handleSubmitForm({
+                            e,
+                            subscribe: (formData) => subscribe(formData)
+                        })} className="flex flex-col lg:flex-row items-center gap-4">
+                            <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Your Email Address"
+                                   className="text-[#434343] bg-gray-50 w-full text-center py-3 rounded-full md:text-lg"/>
+                            <input type="submit" value="Notify me"
+                                   className="bg-[#FF5E5D] py-3 text-white w-full rounded-full font-medium cursor-pointer lg:w-[50%] md:text-lg"/>
+                        </form>
+                        {status === "sending" && <div style={{ color: "blue" }}>sending...</div>}
+                        {status === "success" && <div style={{ color: "green" }}>Subscribed !</div>}
+                    </div>
+                )}
+            />
         )
     }
 
