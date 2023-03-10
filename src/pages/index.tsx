@@ -90,7 +90,7 @@ export default function Home() {
                                 {handleRenderForm()}
                             </div>
                         </div>
-                        <div className="md:absolute right-[-150px] w-[60vw] max-w-[1000px]">
+                        <div className="md:absolute right-[-150px] w-[60vw] max-w-[1000px] lg:relative">
                             <Barista/>
                         </div>
                     </div>
