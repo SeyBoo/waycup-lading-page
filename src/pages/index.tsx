@@ -63,7 +63,7 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <div className="w-screen overflow-hidden">
+            <div className="w-screen overflow-x-hidden relative min-h-screen">
                 <main className="w-[90%] m-auto py-6 flex flex-col gap-12 max-w-[1660px] m-auto">
                     <header className="flex items-center">
                         <Image src={Logo} alt="Waycup-logo" width={180}/>
@@ -90,7 +90,7 @@ export default function Home() {
                                 {handleRenderForm()}
                             </div>
                         </div>
-                        <div className="md:-mr-96">
+                        <div className="md:absolute right-[-150px] w-[60vw] max-w-[1000px]">
                             <Barista/>
                         </div>
                     </div>
